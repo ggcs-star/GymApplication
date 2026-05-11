@@ -1,66 +1,87 @@
-import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
+import { ScrollView, Text, StyleSheet } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-export default function CommunityScreen() {
+import {
+  CommunityHeader,
+  ChallengeCard,
+  FeedCard,
+  LeaderboardCard,
+} from '../components/community';
+
+import challenges from '../data/challenges';
+import feedData from '../data/feedData';
+import leaderboardData from '../data/leaderboardData';
+
+const CommunityScreen = () => {
+  const insets = useSafeAreaInsets();
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Community</Text>
+    <ScrollView
+      style={styles.container}
+      showsVerticalScrollIndicator={false}
+      contentContainerStyle={{
+        paddingBottom: insets.bottom + 120,
+      }}
+    >
+      <CommunityHeader />
+      <LeaderboardCard data={leaderboardData.slice(0, 3)} showViewAll={true} />
 
-      <Text style={styles.subtitle}>
-        Connect with others, share progress & stay motivated 
-      </Text>
+      <Text style={styles.section}>Active Challenges</Text>
 
-      <View style={styles.card}>
-        <Text style={styles.cardTitle}>Coming Soon </Text>
-        <Text style={styles.cardText}>
-          Community features like posts, groups, and challenges will appear here.
-        </Text>
-      </View>
-    </View>
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        style={{ marginHorizontal: -15 }}
+        contentContainerStyle={{
+          paddingLeft: 15,
+          paddingRight: 5,
+        }}
+      >
+        {challenges.map(item => (
+          <ChallengeCard
+            key={item.id}
+            title={item.title}
+            participants={item.participants}
+            days={item.days}
+            bgColor={item.bgColor}
+            btnColor={item.btnColor}
+          />
+        ))}
+      </ScrollView>
+
+      <Text style={styles.section}>Community Feed</Text>
+
+      {feedData.map(item => (
+        <FeedCard
+          key={item.id}
+          name={item.name}
+          text={item.text}
+          likes={item.likes}
+          comments={item.comments}
+          image={item.image}
+          time={item.time}
+          shares={item.shares}
+          postImage={item.postImage}
+          badge={item.badge}
+        />
+      ))}
+    </ScrollView>
   );
-}
+};
+
+export default CommunityScreen;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F8FFF5',
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 20,
+    padding: 15,
   },
 
-  title: {
-    fontSize: 22,
+  section: {
     fontFamily: 'Poppins-Bold',
-    marginBottom: 10,
-  },
-
-  subtitle: {
-    fontSize: 14,
-    color: '#666',
-    textAlign: 'center',
-    marginBottom: 20,
-    fontFamily: 'Poppins-Regular',
-  },
-
-  card: {
-    width: '100%',
-    backgroundColor: '#E6F5E6',
-    padding: 20,
-    borderRadius: 15,
-    alignItems: 'center',
-  },
-
-  cardTitle: {
-    fontSize: 16,
-    fontFamily: 'Poppins-Bold',
-    marginBottom: 5,
-  },
-
-  cardText: {
-    fontSize: 12,
-    color: '#666',
-    textAlign: 'center',
-    fontFamily: 'Poppins-Regular',
+    marginVertical: 10,
+    color: '#1A1A1A',
   },
 });

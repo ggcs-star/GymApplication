@@ -1,14 +1,39 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
-const ButtonsSection = () => {
+import { Text, StyleSheet, TouchableOpacity } from 'react-native';
+
+import { useNavigation } from '@react-navigation/native';
+
+const ButtonsSection = ({ exercises, currentIndex }) => {
+  const navigation = useNavigation();
+
+  const handleSkip = () => {
+    if (!exercises || currentIndex === undefined) {
+      return;
+    }
+
+    const nextIndex = currentIndex + 1;
+
+    if (nextIndex < exercises.length) {
+      navigation.replace('ExerciseDetail', {
+        item: exercises[nextIndex],
+
+        exercises: exercises,
+
+        currentIndex: nextIndex,
+      });
+    } else {
+      navigation.goBack();
+    }
+  };
+
   return (
     <>
       <TouchableOpacity style={styles.startBtn}>
         <Text style={styles.startText}>Start Workout</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.skipBtn}>
+      <TouchableOpacity style={styles.skipBtn} onPress={handleSkip}>
         <Text style={styles.skipText}>Skip Exercise →</Text>
       </TouchableOpacity>
     </>

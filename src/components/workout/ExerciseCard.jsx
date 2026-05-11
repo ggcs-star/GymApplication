@@ -1,14 +1,24 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { TouchableOpacity } from 'react-native';
 
-const ExerciseCard = ({ item }) => {
+import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+
+import { useNavigation } from '@react-navigation/native';
+
+const ExerciseCard = ({ item, exercises, currentIndex }) => {
   const navigation = useNavigation();
+
   return (
     <TouchableOpacity
       style={styles.card}
-      onPress={() => navigation.navigate('ExerciseDetail', { item })}
+      onPress={() =>
+        navigation.navigate('ExerciseDetail', {
+          item: item,
+
+          exercises: exercises,
+
+          currentIndex: currentIndex,
+        })
+      }
     >
       <Text style={styles.time}>{item.time} min</Text>
 
@@ -16,7 +26,9 @@ const ExerciseCard = ({ item }) => {
 
       <View style={{ flex: 1 }}>
         <Text style={styles.title}>{item.name}</Text>
+
         <Text style={styles.target}>Target: {item.target}</Text>
+
         <Text style={styles.details}>
           {item.sets} sets • {item.reps} reps
         </Text>
@@ -34,7 +46,6 @@ const styles = StyleSheet.create({
     padding: 12,
     borderRadius: 14,
     marginBottom: 12,
-
     position: 'relative',
   },
 
@@ -66,7 +77,6 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 10,
     right: 10,
-
     fontSize: 12,
     color: '#666',
     fontFamily: 'Poppins-Medium',

@@ -29,7 +29,7 @@ const WorkoutScreen = () => {
 
         <WorkoutList  data={data} />
 
-          <StartWorkoutButton />
+          <StartWorkoutButton  exercises={data} />
       </ScrollView>
 
     

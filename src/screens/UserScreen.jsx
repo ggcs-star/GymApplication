@@ -1,66 +1,67 @@
-import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 
-export default function UserScreen() {
+import { ScrollView, StyleSheet, TouchableOpacity } from 'react-native';
+
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useNavigation } from '@react-navigation/native';
+
+import BackIcon from '../assets/images/back.svg';
+
+import {
+  ProfileHeader,
+  ProfileStats,
+  GoalsCard,
+  DeviceCard,
+  QuickActions,
+} from '../components/profile';
+
+const UserScreen = () => {
+  const insets = useSafeAreaInsets();
+
+  const navigation = useNavigation();
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Your Profile </Text>
+    <ScrollView
+      style={styles.container}
+      showsVerticalScrollIndicator={false}
+      contentContainerStyle={{
+        paddingTop: insets.top + 10,
+        paddingBottom: 120,
+      }}
+    >
+      <TouchableOpacity
+        style={styles.backBtn}
+        onPress={() => navigation.goBack()}
+      >
+        <BackIcon width={24} height={24} />
+      </TouchableOpacity>
 
-      <Text style={styles.subtitle}>
-        Manage your account & track your progress
-      </Text>
+      <ProfileHeader />
 
-      <View style={styles.card}>
-        <Text style={styles.cardTitle}>Coming Soon </Text>
-        <Text style={styles.cardText}>
-          Profile details, settings, and stats will appear here.
-        </Text>
-      </View>
-    </View>
+      <ProfileStats />
+
+      <GoalsCard />
+
+      <DeviceCard />
+
+      <QuickActions />
+    </ScrollView>
   );
-}
+};
+
+export default UserScreen;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+
     backgroundColor: '#F8FFF5',
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 20,
-  },
 
-  title: {
-    fontSize: 22,
-    fontFamily: 'Poppins-Bold',
-    marginBottom: 10,
+    paddingHorizontal: 20,
   },
-
-  subtitle: {
-    fontSize: 14,
-    color: '#666',
-    textAlign: 'center',
-    marginBottom: 20,
-    fontFamily: 'Poppins-Regular',
-  },
-
-  card: {
-    width: '100%',
-    backgroundColor: '#E6F5E6',
-    padding: 20,
-    borderRadius: 15,
-    alignItems: 'center',
-  },
-
-  cardTitle: {
-    fontSize: 16,
-    fontFamily: 'Poppins-Bold',
-    marginBottom: 5,
-  },
-
-  cardText: {
-    fontSize: 12,
-    color: '#666',
-    textAlign: 'center',
-    fontFamily: 'Poppins-Regular',
+  backBtn: {
+    width: 42,
+    height: 42
+    
   },
 });

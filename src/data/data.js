@@ -36,6 +36,7 @@ const data = [
     reps: 12,
     time: 6,
     image: require('../assets/images/incline.jpg'),
+    video: require('../assets/videos/inclinepress.mp4'),
 
     instructions: [
       'Set bench at 30-45 degree incline',
@@ -64,6 +65,8 @@ const data = [
     reps: 15,
     time: 5,
     image: require('../assets/images/pushups.jpg'),
+     video: require('../assets/videos/pushups.mp4'),
+    
 
     instructions: [
       'Start in plank position',
@@ -92,6 +95,7 @@ const data = [
     reps: 12,
     time: 6,
     image: require('../assets/images/shoulderpress.jpg'),
+    video: require('../assets/videos/shoulderpress.mp4'),
    
     instructions: [
       'Sit upright with dumbbells at shoulders',
@@ -120,6 +124,8 @@ const data = [
     reps: 15,
     time: 5,
     image: require('../assets/images/lateral.jpg'),
+    video: require('../assets/videos/lateralraises.mp4'),
+
 
     instructions: [
       'Stand with dumbbells at sides',
@@ -148,6 +154,7 @@ const data = [
     reps: 12,
     time: 5,
     image: require('../assets/images/bicepcurls.jpg'),
+     video: require('../assets/videos/bicepscurls.mp4'),
 
     instructions: [
       'Stand with dumbbells in hands',
@@ -176,6 +183,7 @@ const data = [
     reps: 12,
     time: 5,
     image: require('../assets/images/hammercurls.jpg'),
+     video: require('../assets/videos/hammercurls.mp4'),
 
     instructions: [
       'Hold dumbbells with neutral grip',
@@ -204,6 +212,8 @@ const data = [
     reps: 15,
     time: 6,
     image: require('../assets/images/tricepdips.jpg'),
+   video: require('../assets/videos/tricepdips.mp4'),
+    
 
     instructions: [
       'Place hands on bench edge',

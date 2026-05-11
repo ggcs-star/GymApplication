@@ -6,14 +6,14 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import HomeIcon from '../assets/images/house.svg';
 import WorkoutIcon from '../assets/images/dumbbell1.svg';
 import DietIcon from '../assets/images/diet.svg';
-import CommunityIcon from "../assets/images/users2.svg";
-import UserIcon from '../assets/images/user.svg';
+import CommunityIcon from '../assets/images/globe.svg';
+import HealthIcon from '../assets/images/heart-pulse.svg';
 
 import HomeScreen from '../screens/HomeScreen';
 import WorkoutScreen from '../screens/WorkoutScreen';
 import DietScreen from '../screens/DietScreen';
-import CommunityScreen from "../screens/CommunityScreen";
-import UserScreen from '../screens/UserScreen';
+import CommunityScreen from '../screens/CommunityScreen';
+import HealthScreen from '../screens/HealthScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -52,7 +52,7 @@ const BottomTabs = () => {
         tabBarStyle: {
           position: 'absolute',
           bottom: 16 + insets.bottom,
-         marginHorizontal:20,
+          marginHorizontal: 20,
           alignSelf: 'center',
           height: 70,
           borderRadius: 25,
@@ -65,7 +65,7 @@ const BottomTabs = () => {
           shadowRadius: 10,
           paddingBottom: 0,
           paddingTop: 0,
-          overflow:'hidden'
+          overflow: 'hidden',
         },
       }}
     >
@@ -110,11 +110,11 @@ const BottomTabs = () => {
       />
 
       <Tab.Screen
-        name="User"
-        component={UserScreen}
+        name="Health"
+        component={HealthScreen}
         options={{
           tabBarIcon: ({ focused }) => (
-            <TabItem Icon={UserIcon} label="Profile" focused={focused} />
+            <TabItem Icon={HealthIcon} label="Health" focused={focused} />
           ),
         }}
       />

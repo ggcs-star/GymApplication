@@ -1,103 +1,40 @@
-// import React from 'react';
-// import { View, StyleSheet, TouchableOpacity } from 'react-native';
-// import Video, { ViewType } from 'react-native-video';
-// import PlayIcon from '../../assets/images/play2.svg';
+import React, { useState } from 'react';
 
-// const VideoSection = ({ video, paused, setPaused }) => {
-//   return (
-//     <View style={styles.videoBox}>
-//       <TouchableOpacity
-//         activeOpacity={1}
-//         onPress={() => setPaused(!paused)}
-//         style={styles.touchable}
-//       >
-//         <Video
-//           source={{ uri: 'https://www.w3schools.com/html/mov_bbb.mp4' }}
-//           style={styles.video}
-//           resizeMode="cover"
-//           paused={paused}
-//           viewType={ViewType.TEXTURE}
-//           onLoad={data => console.log('LOADED:', data)}
-//           onError={err => console.log('ERROR:', err)}
-//           onReadyForDisplay={() => console.log('READY')}
-//         />
-//         {paused && (
-//           <View style={styles.playBtn}>
-//             <PlayIcon width={22} height={22} />
-//           </View>
-//         )}
-//       </TouchableOpacity>
-//     </View>
-//   );
-// };
+import { View, StyleSheet, TouchableOpacity, Image } from 'react-native';
 
-// export default VideoSection;
-
-// const styles = StyleSheet.create({
-//   videoBox: {
-//     height: 200,
-//     marginBottom: 15,
-//     borderRadius: 16,
-//      overflow: 'hidden',
-//   },
-//   touchable: {
-//     width: '100%',
-//     height: 200,
-//   },
-//   video: {
-//     width: '100%',
-//     height: 200,
-//   },
-//   playBtn: {
-//     position: 'absolute',
-//     alignSelf: 'center',
-//     top: '40%',
-//     backgroundColor: '#6CFF1A',
-//     padding: 12,
-//     borderRadius: 30,
-//   },
-// });
-
-
-
-
-
-import React from 'react';
-import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import Video from 'react-native-video';
+
 import PlayIcon from '../../assets/images/play2.svg';
-import VideoPlayer from 'react-native-video-controls';
 
 const VideoSection = ({ video, paused, setPaused }) => {
   return (
     <View style={styles.videoBox}>
+      <Video
+        source={video}
+        style={styles.video}
+        resizeMode="cover"
+        paused={paused}
+        repeat={true}
+        controls={false}
+        playInBackground={false}
+        playWhenInactive={false}
+        ignoreSilentSwitch="ignore"
+        onLoad={data => console.log('LOADED:', data)}
+        onError={err => console.log('ERROR:', err)}
+        onReadyForDisplay={() => console.log('READY')}
+      />
+
       <TouchableOpacity
         activeOpacity={1}
+        style={styles.overlay}
         onPress={() => setPaused(!paused)}
-        style={styles.touchable}
       >
-        <Video
-          source={{ uri: 'https://www.w3schools.com/html/mov_bbb.mp4' }}
-          style={styles.video}
-          resizeMode="cover"
-          paused={paused}
-          useTextureView={true}   
-          onLoad={data => console.log('LOADED:', data)}
-          onError={err => console.log('ERROR:', err)}
-          onReadyForDisplay={() => console.log('READY')}
-        />
-
-        {/* <VideoPlayer
-          source={{ uri: 'https://www.w3schools.com/html/mov_bbb.mp4' }}
-           style={styles.video}
-        /> */}
         {paused && (
           <View style={styles.playBtn}>
             <PlayIcon width={22} height={22} />
           </View>
         )}
       </TouchableOpacity>
-
     </View>
   );
 };
@@ -110,22 +47,25 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     borderRadius: 16,
     overflow: 'hidden',
+    position: 'relative',
   },
-  touchable: {
-    width: '100%',
-    height: 200,
-  },
+
   video: {
     width: '100%',
-    height: 200,
-    backgroundColor: 'black',
+    height: '100%',
   },
-  playBtn: {
+
+  overlay: {
     position: 'absolute',
-    alignSelf: 'center',
-    top: '40%',
+    width: '100%',
+    height: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  playBtn: {
     backgroundColor: '#6CFF1A',
-    padding: 12,
-    borderRadius: 30,
+    padding: 14,
+    borderRadius: 40,
   },
 });
