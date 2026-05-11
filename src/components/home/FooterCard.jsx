@@ -7,7 +7,7 @@ import StepsIcon from '../../assets/images/steps.svg';
 const FooterCard = () => {
   return (
     <LinearGradient
-      colors={['#6CFF1A', '#00E676']}
+      colors={['#95d895', '#D6F7D6']}
       start={{ x: 0, y: 0 }}
       end={{ x: 1, y: 1 }}
       style={styles.footerCard}
@@ -37,13 +37,10 @@ const styles = StyleSheet.create({
     marginTop: 15,
     marginBottom: 10,
 
-    borderWidth: 1,
-    borderColor: '#0a0c0a',
-
     shadowColor: '#2E7D32',
-    shadowOpacity: 0.08,
+    shadowOpacity: 0.1,
     shadowRadius: 6,
-    elevation: 3,
+    elevation: 6,
   },
 
   footerRow: {
@@ -56,7 +53,7 @@ const styles = StyleSheet.create({
   footerTitle: {
     fontSize: 14,
     fontFamily: 'Poppins-Bold',
-    color: '#000', 
+    color: '#000',
   },
 
   footerText: {

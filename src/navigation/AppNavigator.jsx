@@ -18,7 +18,16 @@ import HomeScreen from '../screens/HomeScreen';
 import BottomTabs from './BottomTabs';
 import SportsScreen from '../screens/SportsScreen';
 import ProgressScreen from '../screens/ProgressScreen';
+import AddMealScreen from '../screens/AddMealScreen';
 import ExerciseDetailScreen from '../screens/ExerciseDetailScreen';
+import LeaderboardScreen from '../screens/LeaderboardScreen';
+import SportsTrainingScreen from '../screens/SportsTrainingScreen';
+import TechniqueDetailScreen from '../screens/TechniqueDetailScreen';
+import HealthScreen from '../screens/HealthScreen';
+import UserScreen from '../screens/UserScreen';
+import UploadReportScreen from '../screens/UploadReportScreen';
+import RewardScreen from '../screens/RewardScreen';
+
 const Stack = createNativeStackNavigator();
 
 const AppNavigator = () => {
@@ -46,6 +55,18 @@ const AppNavigator = () => {
         <Stack.Screen name="Sports" component={SportsScreen} />
         <Stack.Screen name="Progress" component={ProgressScreen} />
         <Stack.Screen name="ExerciseDetail" component={ExerciseDetailScreen} />
+        <Stack.Screen name="AddMeal" component={AddMealScreen} />
+        <Stack.Screen name="Leaderboard" component={LeaderboardScreen} />
+        <Stack.Screen name="SportsTraining" component={SportsTrainingScreen} />
+        <Stack.Screen
+          name="TechniqueDetail"
+          component={TechniqueDetailScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen name="User" component={UserScreen} />
+        <Stack.Screen name="Health" component={HealthScreen} />
+        <Stack.Screen name="UploadReport" component={UploadReportScreen} />
+        <Stack.Screen name="Reward" component={RewardScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -1,27 +1,30 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 
-import StreakIcon from '../../assets/images/award.svg'; 
+import { useNavigation } from '@react-navigation/native';
+
+import StreakIcon from '../../assets/images/award.svg';
 
 const StreakCard = ({ days = 12, totalDays = 7 }) => {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
-      
-    
       <View style={styles.headerRow}>
         <Text style={styles.title}>Your Streak</Text>
-        <Text style={styles.link}>View Rewards</Text>
+        <TouchableOpacity
+          activeOpacity={0.8}
+          onPress={() => navigation.navigate('Reward')}
+        >
+          <Text style={styles.link}>View Rewards</Text>
+        </TouchableOpacity>
       </View>
 
-     
       <View style={styles.card}>
-        
-       
         <View>
           <Text style={styles.daysText}>{days} Days</Text>
           <Text style={styles.subText}>Keep it going!</Text>
 
-       
           <View style={styles.progressRow}>
             {[...Array(totalDays)].map((_, index) => (
               <View
@@ -37,7 +40,6 @@ const StreakCard = ({ days = 12, totalDays = 7 }) => {
           </View>
         </View>
 
-        
         <View style={styles.iconCircle}>
           <StreakIcon width={22} height={22} />
         </View>

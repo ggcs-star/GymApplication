@@ -68,7 +68,7 @@ const WorkoutDaysScreen = ({ navigation }) => {
 
       <CustomButton
         title="Next"
-        onPress={() => navigation.navigate('NextScreen')}
+        onPress={() => navigation.navigate('Login')}
       />
     </View>
   );
