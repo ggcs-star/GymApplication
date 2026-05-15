@@ -30,7 +30,7 @@ const TechniqueDetailScreen = () => {
 
   const [paused, setPaused] = useState(true);
 
-  const { item } = route.params;
+  const { item, techniques, currentIndex } = route.params;
 
   return (
     <View style={styles.container}>
@@ -78,7 +78,9 @@ const TechniqueDetailScreen = () => {
 
         <InfoSection title="Pro Tips" data={item.tips} type="tip" />
 
-        <ButtonsSection />
+        <ButtonsSection  item={item}
+          techniques={techniques}
+          currentIndex={currentIndex} />
       </ScrollView>
     </View>
   );
