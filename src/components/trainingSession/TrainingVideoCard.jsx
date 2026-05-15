@@ -1,70 +1,101 @@
-import React, { useState } from 'react';
+import React, {
+  useState,
+} from 'react';
 
-import { View, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import {
+  View,
+  StyleSheet,
+  TouchableOpacity,
+} from 'react-native';
 
 import Video from 'react-native-video';
 
 import PlayIcon from '../../assets/images/play2.svg';
 
-const VideoSection = ({ video, paused, setPaused }) => {
+const TrainingVideoCard = ({
+  item,
+}) => {
+
+  const [paused, setPaused] =
+    useState(true);
+
   return (
     <View style={styles.videoBox}>
+
       <Video
-        source={video}
+        source={item.video}
         style={styles.video}
         resizeMode="cover"
         paused={paused}
         repeat={true}
         controls={false}
-        playInBackground={false}
-        playWhenInactive={false}
-        ignoreSilentSwitch="ignore"
         surfaceType="surface"
-       
       />
 
       <TouchableOpacity
-        activeOpacity={1}
         style={styles.overlay}
-        onPress={() => setPaused(!paused)}
+        activeOpacity={1}
+        onPress={() =>
+          setPaused(!paused)
+        }
       >
+
         {paused && (
+
           <View style={styles.playBtn}>
-            <PlayIcon width={22} height={22} />
+
+            <PlayIcon
+              width={24}
+              height={24}
+            />
+
           </View>
+
         )}
+
       </TouchableOpacity>
+
     </View>
   );
 };
 
-export default VideoSection;
+export default TrainingVideoCard;
 
 const styles = StyleSheet.create({
   videoBox: {
-    height: 200,
-    marginBottom: 15,
-    borderRadius: 16,
+    height: 220,
+
+    borderRadius: 20,
+
     overflow: 'hidden',
-    position: 'relative',
+
+    marginBottom: 24,
   },
 
   video: {
     width: '100%',
+
     height: '100%',
   },
 
   overlay: {
     position: 'absolute',
+
     width: '100%',
+
     height: '100%',
+
     justifyContent: 'center',
+
     alignItems: 'center',
   },
 
   playBtn: {
-    backgroundColor: '#6CFF1A',
-    padding: 14,
+    backgroundColor:
+      '#6CFF1A',
+
+    padding: 16,
+
     borderRadius: 40,
   },
 });

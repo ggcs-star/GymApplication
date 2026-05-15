@@ -3,13 +3,20 @@ import React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-const TechniqueCard = ({ item }) => {
+const TechniqueCard = ({ item, techniques, index }) => {
   const navigation = useNavigation();
 
   return (
     <TouchableOpacity
       style={styles.card}
-      onPress={() => navigation.navigate('TechniqueDetail', { item })}
+      onPress={() =>
+        navigation.navigate('TechniqueDetail', {
+          item,
+          techniques,
+
+          currentIndex: index,
+        })
+      }
     >
       <Image source={item.image} style={styles.image} />
 

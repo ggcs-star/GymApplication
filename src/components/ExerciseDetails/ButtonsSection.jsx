@@ -29,7 +29,16 @@ const ButtonsSection = ({ exercises, currentIndex }) => {
 
   return (
     <>
-      <TouchableOpacity style={styles.startBtn}>
+      <TouchableOpacity
+        style={styles.startBtn}
+        onPress={() =>
+          navigation.navigate('WorkoutSession', {
+            item: exercises[currentIndex],
+            exercises: exercises,
+            currentIndex: currentIndex,
+          })
+        }
+      >
         <Text style={styles.startText}>Start Workout</Text>
       </TouchableOpacity>
 

@@ -2,10 +2,22 @@ import React from 'react';
 
 import { Text, StyleSheet, TouchableOpacity } from 'react-native';
 
-const ButtonsSection = () => {
+import { useNavigation } from '@react-navigation/native';
+
+const ButtonsSection = ({ item, techniques, currentIndex }) => {
+  const navigation = useNavigation();
+
+  const handleStartTraining = () => {
+    navigation.navigate('TrainingSession', {
+      item,
+      techniques,
+      currentIndex,
+    });
+  };
+
   return (
     <>
-      <TouchableOpacity style={styles.startBtn}>
+      <TouchableOpacity style={styles.startBtn} onPress={handleStartTraining}>
         <Text style={styles.startText}>Start Training</Text>
       </TouchableOpacity>
 
@@ -34,6 +46,7 @@ const styles = StyleSheet.create({
 
   skipBtn: {
     alignItems: 'center',
+    
     marginTop: 12,
   },
 

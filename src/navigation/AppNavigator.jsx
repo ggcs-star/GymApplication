@@ -27,6 +27,8 @@ import HealthScreen from '../screens/HealthScreen';
 import UserScreen from '../screens/UserScreen';
 import UploadReportScreen from '../screens/UploadReportScreen';
 import RewardScreen from '../screens/RewardScreen';
+import WorkoutSessionScreen from '../screens/WorkoutSessionScreen';
+import TrainingSessionScreen from '../screens/TrainingSessionScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -67,6 +69,14 @@ const AppNavigator = () => {
         <Stack.Screen name="Health" component={HealthScreen} />
         <Stack.Screen name="UploadReport" component={UploadReportScreen} />
         <Stack.Screen name="Reward" component={RewardScreen} />
+        <Stack.Screen name="WorkoutSession" component={WorkoutSessionScreen} />
+        <Stack.Screen
+          name="TrainingSession"
+          component={TrainingSessionScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

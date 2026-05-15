@@ -8,7 +8,12 @@ const TechniqueList = ({ data }) => {
   return (
     <View>
       {data.map((item, index) => (
-        <TechniqueCard key={index} item={item} />
+        <TechniqueCard
+          key={index}
+          item={item}
+          techniques={data}
+          index={index}
+        />
       ))}
     </View>
   );
